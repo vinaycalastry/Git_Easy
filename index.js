@@ -11,7 +11,7 @@ function triggerGitPush(message){
     new listr([
         {
             title: "Adding changes to git",
-            task: () => execa('git', ['add', '.'])
+            task: (ctx, task) => execa('git', ['add', '.']).catch(() => task.skip())
         },
         {
             title: "Commit changes to repo",
