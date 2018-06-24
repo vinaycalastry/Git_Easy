@@ -4,7 +4,7 @@
 const commander = require('commander');
 
 
-
+//Helper function to add, commit and push changes to git
 function triggerGitPush(message){
     const execa = require('execa');
     const listr = require('listr');
@@ -29,13 +29,14 @@ commander
     .version('0.1.0')
     .description('Git made easy');
 
-
+//Command to commit changes with message "Regular Sync"
 commander
     .command('regularsync')
     .alias('r')
     .description("Pushes to remote 'origin' repo with commit message as 'Regular Sync'")
     .action(() => triggerGitPush('Regular Sync'));
 
+//Command to commit changes with message <msg>
 commander
     .command('syncwithmessage <msg>')
     .alias('m')
